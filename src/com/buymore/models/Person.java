@@ -39,6 +39,7 @@ public abstract class Person {
 
     public String toString() {
         return "FirstName: " + firstName + "\nLastName: " + lastName +
-                "\nPhone Number: " + phoneNumber + "\nEmail: " + email + "\nAddress:";
+                "\nPhone Number: " + phoneNumber + "\nEmail: " + email + "\nAddress: { " +
+                address.getArea() + ", " + address.getCity() + ", " + address.getState() + " }";
     }
 }

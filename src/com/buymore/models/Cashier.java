@@ -2,22 +2,37 @@ package com.buymore.models;
 
 import com.buymore.composite.Address;
 import com.buymore.enums.Role;
+import com.buymore.interfaces.CashierInterface;
+import com.buymore.interfaces.CompanyInterface;
+import com.buymore.interfaces.CustomerInterface;
 
-public class Cashier extends Staff {
+import java.util.List;
 
-    public Cashier(String firstName, String lastName, long phoneNumber, String email, Role role, Address address) {
-        super(firstName, lastName, phoneNumber, email, role, address);
-    }
-
+public class Cashier extends Staff implements CashierInterface {
+    CompanyInterface companyInterface;
+    CustomerInterface customerInterface;
     public Cashier(String staffId, String firstName, String lastName, long phoneNumber, String email, Role role, Address address) {
         super(staffId, firstName, lastName, phoneNumber, email, role, address);
     }
 
-    public void sellProduct() {
-        System.out.println("Ava Soap #250 Laide Smith");
+    @Override
+    public boolean sellProducts(List<String> productIds) {
+        return !productIds.isEmpty();
     }
 
-    public void dispenseReceipt() {
-        System.out.println("Receipt: ");
+    @Override
+    public String presentReceipts(List<String> customerCart) {
+
+        return null;
+    }
+
+    @Override
+    public void setCompanyInterface(CompanyInterface companyInterface) {
+        this.companyInterface = companyInterface;
+    }
+
+    @Override
+    public void setCustomerInterface(CustomerInterface customerInterface) {
+        this.customerInterface = customerInterface;
     }
 }
