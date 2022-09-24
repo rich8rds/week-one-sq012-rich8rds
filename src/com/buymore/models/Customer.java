@@ -12,7 +12,7 @@ import java.util.List;
 public class Customer extends Person implements CustomerInterface {
     private String customerId;
     private Role role;
-    private List<String> customerCart;
+    private List<Product> customerCart;
 
     private CashierInterface cashierInterface;
     private CompanyInterface companyInterface;
@@ -36,15 +36,15 @@ public class Customer extends Person implements CustomerInterface {
     }
 
     @Override
-    public void addToCart(Product product) {
-        product.setQuantityInStock((product.getQuantityInStock() - 1));
-        customerCart.add(product.getProductId());
+    public void addToCart(Product product, int quantity) {
+        product.setQuantityInStock((product.getQuantityInStock() - quantity));
+        customerCart.add(new Product(product.getProductId(), product.getProductName(), product.getPrice(), quantity));
     }
 
     @Override
     public void removeFromCart(Product product) {
         product.setQuantityInStock((product.getQuantityInStock() + 1));
-        customerCart.remove(product.getProductId());
+        customerCart.remove(product);
     }
 
     @Override
@@ -54,15 +54,18 @@ public class Customer extends Person implements CustomerInterface {
 
     @Override
     public void viewCart() {
+        System.out.println("CART");
+        System.out.println("*******************************************************************");
+        System.out.println("PRODUCT ID\t\tPRODUCT\t\tPRICE\t\tQUANTITY");
+        System.out.println("*******************************************************************");
         System.out.println(customerCart);
+        System.out.println("*******************************************************************\n");
     }
 
-    @Override
     public void setCashierInterface(CashierInterface cashierInterface) {
         this.cashierInterface = cashierInterface;
     }
 
-    @Override
     public void setCompanyInterface(CompanyInterface companyInterface) {
         this.companyInterface = companyInterface;
     }

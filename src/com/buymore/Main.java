@@ -27,23 +27,23 @@ public class Main {
 
         //STAFF
         Address staffAddress1 = new Address("Johnson Rick Area", "Lekki", "Lagos");
-        Manager manager = new Manager("MAN001", "Korede", "Bello",
+        Staff manager = new Staff("MAN001", "Korede", "Bello",
                 23480184657L, "korede.bello@gmail.com", Role.MANAGER, staffAddress1);
 
         Address staffAddress2 = new Address("Shalom Area", "Lekki", "Lagos");
-        Cashier cashier = new Cashier("CASH001", "Clark", "Kent",
+        Staff cashier = new Staff("CASH001", "Clark", "Kent",
                 23484938266L, "korede.bello@gmail.com", Role.CASHIER, staffAddress2);
 
         List<Staff> staffList = List.of(manager, cashier);
 
         //PRODUCTS
-        Product television = new Product("PROD384", Products.TELEVISION, 10000, 4);
-        Product refrigerator = new Product("PROD385", Products.REFRIGERATOR, 15000, 2);
-        Product electricKettle = new Product("PROD386", Products.ELECTRIC_KETTLE, 5000, 8);
-        Product heater = new Product("PROD387", Products.HEATER, 2000, 5);
-        Product iron = new Product("PROD388", Products.IRON, 1000, 7);
-        Product stove = new Product("PROD388", Products.STOVE, 1200.89d, 1);
-        Product soundSystem = new Product("PROD388", Products.SOUND_SYSTEM, 18000.71d, 2);
+        Product television = new Product("PROD384", Products.MONITOR, 100000d, 4);
+        Product refrigerator = new Product("PROD385", Products.FRIDGE, 150000d, 2);
+        Product electricKettle = new Product("PROD386", Products.KETTLE, 500000d, 8);
+        Product heater = new Product("PROD387", Products.HEATER, 200000d, 5);
+        Product iron = new Product("PROD388", Products.IRON, 100000d, 7);
+        Product stove = new Product("PROD388", Products.STOVE, 120000d, 1);
+        Product soundSystem = new Product("PROD388", Products.SPEAKER, 180000d, 2);
 
         List<Product> productList = List.of(television, refrigerator, electricKettle, heater, iron, stove, soundSystem);
 
@@ -53,18 +53,18 @@ public class Main {
         CashierInterface cashierInterface = cashier;
         CustomerInterface customerInterface =  customer1;
 
-        customerInterface.setCashierInterface(cashierInterface);
-        customerInterface.setCompanyInterface(companyInterface);
+        cashier.setCustomerInterface(customerInterface);
+
+        customer1.setCashierInterface(cashierInterface);
+        customer1.setCompanyInterface(companyInterface);
 
         customerInterface.getListOfProducts();
-        customerInterface.addToCart(productList.get(1));
-        customerInterface.addToCart(productList.get(1));
-        customerInterface.addToCart(productList.get(3));
+        customerInterface.addToCart(productList.get(1), 2);
+        customerInterface.addToCart(productList.get(3), 1);
         customerInterface.viewCart();
 
         customerInterface.buyProducts();
 
 
-        cashierInterface.setCustomerInterface(customerInterface);
     }
 }

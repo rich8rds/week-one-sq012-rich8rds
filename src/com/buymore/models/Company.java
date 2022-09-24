@@ -9,14 +9,11 @@ public class Company implements CompanyInterface {
     List<Staff> staffList;
     List<Product> products;
     List<Customer> customers;
-    List<StaffInterface> staffInterfaces;
-    List<CustomerInterface> customerInterfaces;
+
     public Company(List<Staff> staffList, List<Product> products, List<Customer> customers) {
         this.staffList = staffList;
         this.products = products;
         this.customers = customers;
-        this.customerInterfaces = new ArrayList<>(customers);
-        this.staffInterfaces = new ArrayList<>(staffList);
     }
 
 
@@ -47,10 +44,16 @@ public class Company implements CompanyInterface {
     @Override
     public void getListOfProducts() {
         int count = 0;
+        System.out.println("*******************************************************************");
+        System.out.println("SN\t\tPRODUCT ID\t\tPRODUCT\t\tPRICE\t\tQUANTITY");
+        System.out.println("*******************************************************************\n");
         for(Product p : products) {
-            System.out.print(++count + ": "+p.getProductId() + "\t" + p.getProductName() + "\t"
-                    + p.getPrice() + "\t\t\t" + p.getQuantityInStock() + "\n");
+            System.out.print(++count + ": \t\t"+p.getProductId() +
+                    "\t\t\t" + p.getProductName() +
+                    "\t\t" + p.getPrice() +
+                    "\t\t" + p.getQuantityInStock() + "\n");
         }
+        System.out.println("\n*******************************************************************");
         System.out.println();
     }
 }
