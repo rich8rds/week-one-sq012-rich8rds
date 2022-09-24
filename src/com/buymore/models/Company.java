@@ -17,30 +17,6 @@ public class Company implements CompanyInterface {
     }
 
 
-    public List<Staff> getStaffList() {
-        return staffList;
-    }
-
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
-
     @Override
     public void getListOfProducts() {
         int count = 0;
@@ -55,5 +31,35 @@ public class Company implements CompanyInterface {
         }
         System.out.println("\n*******************************************************************");
         System.out.println();
+    }
+
+    @Override
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
+
+    @Override
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    @Override
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    @Override
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

@@ -54,7 +54,6 @@ public class Main {
         CustomerInterface customerInterface =  customer1;
 
         cashier.setCustomerInterface(customerInterface);
-
         customer1.setCashierInterface(cashierInterface);
         customer1.setCompanyInterface(companyInterface);
 
@@ -62,6 +61,7 @@ public class Main {
         customerInterface.addToCart(productList.get(1), 2);
         customerInterface.addToCart(productList.get(3), 1);
         customerInterface.viewCart();
+        customerInterface.getListOfProducts();
 
         customerInterface.buyProducts();
 

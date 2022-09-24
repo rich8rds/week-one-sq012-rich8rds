@@ -13,6 +13,7 @@ public class Customer extends Person implements CustomerInterface {
     private String customerId;
     private Role role;
     private List<Product> customerCart;
+    private Address address;
 
     private CashierInterface cashierInterface;
     private CompanyInterface companyInterface;
@@ -21,6 +22,7 @@ public class Customer extends Person implements CustomerInterface {
         super(firstName, lastName, phoneNumber, email, address);
         this.customerId = customerId;
         this.role = Role.CUSTOMER;
+        this.address = address;
         this.customerCart = new ArrayList<>();
     }
 
