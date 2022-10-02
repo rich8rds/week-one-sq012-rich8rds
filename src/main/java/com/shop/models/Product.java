@@ -1,8 +1,11 @@
-package com.buymore.models;
+package com.shop.models;
 
-import com.buymore.enums.Products;
+import com.shop.enums.Products;
 
 public class Product {
+    private String customerId;
+    private String customerName;
+
     private static  int count;
     private String productId;
     private Products productName;
@@ -14,6 +17,15 @@ public class Product {
         this.productName = productName;
         this.price = price;
         this.quantityInStock = quantityInStock;
+    }
+
+    public Product(String productId, Products productName, double price, int quantityInStock, String customerId, String customerName) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantityInStock = quantityInStock;
+        this.customerId = customerId;
+        this.customerName = customerName;
     }
 
     public String getProductId() {
@@ -51,6 +63,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return " \n" + productId + "\t\t" + productName + "\t\t" + price + "\t\t" + quantityInStock + "\n";
+        return "\t\t"+productId +
+                    "\t\t\t" + productName +
+                    "\t\t" + price +
+                    "\t\t" + (quantityInStock == 0 ? "Out of Stock" : quantityInStock) + "\n";
     }
 }

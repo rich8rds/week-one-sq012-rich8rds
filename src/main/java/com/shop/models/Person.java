@@ -1,6 +1,5 @@
-package com.buymore.models;
+package com.shop.models;
 
-import com.buymore.composite.Address;
 
 public abstract class Person {
     private String firstName;

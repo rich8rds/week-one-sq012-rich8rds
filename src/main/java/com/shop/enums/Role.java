@@ -1,4 +1,4 @@
-package com.buymore.enums;
+package com.shop.enums;
 
 public enum Role {
     MANAGER, CASHIER, CUSTOMER

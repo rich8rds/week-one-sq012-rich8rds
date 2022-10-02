@@ -1,14 +1,14 @@
-package com.buymore.composite;
+package com.shop.models;
 
 public class Address {
     private String area;
     private String city;
-    private String State;
+    private String state;
 
     public Address(String area, String city, String state) {
         this.area = area;
         this.city = city;
-        State = state;
+        this.state = state;
     }
 
     public String getArea() {
@@ -28,10 +28,15 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Address: { " + area + " " + city + " " + " "+ state + " }";
     }
 }
