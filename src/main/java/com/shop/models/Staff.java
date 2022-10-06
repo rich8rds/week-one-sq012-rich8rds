@@ -19,12 +19,4 @@ public class Staff extends Person {
         this.role = role;
    }
 
-    public String getStaffId() {
-        return staffId;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
 }

@@ -1,31 +1,39 @@
 package com.shop.models;
 
+import com.shop.enums.Category;
 import com.shop.enums.Products;
 
-public class Product {
-    private String customerId;
-    private String customerName;
 
-    private static  int count;
+public class Product {
+    private static Integer counter = 0;
+    private Integer count;
     private String productId;
     private Products productName;
-    private int quantityInStock;
-    private double price;
 
-    public Product(String productId, Products productName, double price, int quantityInStock) {
+    private double price;
+    private int quantityInStock;
+    private Category category;
+
+    public Product(String productId, Products productName, double price, Integer quantityInStock, Category category) {
         this.productId = productId;
         this.productName = productName;
-        this.price = price;
         this.quantityInStock = quantityInStock;
+        this.price = price;
+        this.category = category;
+        this.count = counter++;
     }
 
-    public Product(String productId, Products productName, double price, int quantityInStock, String customerId, String customerName) {
+    public Product(Integer count, String productId, Products productName, double price, int quantityInStock, Category category) {
+        this.count = count;
         this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.quantityInStock = quantityInStock;
-        this.customerId = customerId;
-        this.customerName = customerName;
+        this.category = category;
+    }
+
+    public Integer getCount() {
+        return count;
     }
 
     public String getProductId() {
@@ -60,12 +68,22 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     @Override
     public String toString() {
+
+
         return "\t\t"+productId +
-                    "\t\t\t" + productName +
-                    "\t\t" + price +
-                    "\t\t" + (quantityInStock == 0 ? "Out of Stock" : quantityInStock) + "\n";
+                "\t\t\t" + (quantityInStock == 0 ? "Out Of Stock" : quantityInStock) +
+                (quantityInStock == 0 ? "\t\t" + price : "\t\t\t\t\t" + price) +
+                "\t\t" + productName +
+                 "\n";
     }
 }

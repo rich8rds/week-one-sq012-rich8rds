@@ -22,8 +22,14 @@ public class Customer extends Person {
         this.balance = balance;
     }
 
+
+
     public double getBalance() {
         return balance;
+    }
+
+    public String getCustomerId() {
+        return customerId;
     }
 
     @Override

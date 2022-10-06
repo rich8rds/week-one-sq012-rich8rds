@@ -15,8 +15,7 @@ public class StaffServiceImpl implements ManagerService, CashierService {
         for(Product p : cartItems) {
             totalPrice += p.getPrice() * p.getQuantityInStock();
         }
-        if((totalPrice < customer.getBalance())) {
-            issueReceipt(customer, cartItems);
+        if((customer.getBalance() > totalPrice)) {
             return "Cleared";
         }
         return "Insufficient Funds!";
@@ -31,31 +30,31 @@ public class StaffServiceImpl implements ManagerService, CashierService {
         System.out.println(customer.toString());
         System.out.println(LocalDate.now());
         System.out.println("*******************************************************************");
-        System.out.println("SN\t\tPRODUCT ID\t\tPRODUCT\t\tPRICE\t\tQUANTITY");
-        System.out.println("*******************************************************************\n");
+        System.out.println("SN\t\tPRODUCT ID\t\tPRODUCT\t\t\tPRICE\t\tQUANTITY");
+        System.out.println("*******************************************************************");
 
         for(Product p : cartItems) {
             System.out.println((++count) +""+ p);
             total += p.getPrice() * p.getQuantityInStock();
         }
-        System.out.println("\n*******************************************************************");
+        System.out.println("*******************************************************************");
         System.out.println("TOTAL: " + total);
-        System.out.println("\n*******************************************************************");
+        System.out.println("*******************************************************************");
         System.out.println();
     }
 
 
     //MANAGER SERVICE
     @Override
-    public boolean hireCashier(Applicant applicant) {
+    public boolean hireCashier(Applicant applicant, Role role) {
         if(applicant.getQualification().equals(Qualification.HND)
                 && applicant.getYearsOfExperience() >= 2){
-            CompanyDB companyDB = new CompanyDB();
+            Store companyDB = new Store();
             companyDB.getStaff().add(
                     new Staff("STAF753", applicant.getFirstName(),
                             applicant.getLastName(),
                             applicant.getPhoneNumber(), applicant.getEmail(),
-                             Role.CASHIER,
+                             role,
                             applicant.getAddress()));
             return true;
         }
